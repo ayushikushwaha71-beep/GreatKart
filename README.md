@@ -59,8 +59,6 @@ The project demonstrates Django backend development, database management, templa
 
 ### Tools
 
-- Git
-- GitHub
 - Visual Studio Code
 
 ---
