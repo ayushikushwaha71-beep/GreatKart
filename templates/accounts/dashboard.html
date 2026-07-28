@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="section-conten padding-y bg">
+
+    {% include 'includes/alerts.html' %}
+
+    <div class="container">
+        <div class="row">
+
+            {% include 'includes/dashboard_sidebar.html' %}
+
+            <main class="col-md-9">
+                <article class="card">
+
+                    <header class="card-header">
+                        <strong class="d-inline-block mr-3">Logged in as:</strong>
+                        <span>{{ user.full_name }}</span>
+                    </header>
+
+                    <div class="card-body">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Orders</h5>
+                                        <h4>{{ orders_count }}</h4>
+                                        <a href="{% url 'my_orders' %}">View Orders</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="card text-center">
+                                    <div class="card-body">
+
+                                        {% if userprofile.profile_picture %}
+                                            <img src="{{ userprofile.profile_picture.url }}"
+                                                 alt="Profile Picture"
+                                                 width="80"
+                                                 height="80"
+                                                 style="border-radius:50%; object-fit:cover;">
+                                        {% else %}
+                                            <div style="width:80px;height:80px;border-radius:50%;background:#e9ecef;margin:auto;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:bold;">
+                                                {{ user.first_name|first }}
+                                            </div>
+                                        {% endif %}
+
+                                        <br><br>
+
+                                        <p class="mb-1"><strong>{{ user.email }}</strong></p>
+
+                                        {% if user.phone_number %}
+                                            <p>{{ user.phone_number }}</p>
+                                        {% else %}
+                                            <p>No phone number added</p>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </article>
+            </main>
+
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
